@@ -1,0 +1,11 @@
+[Added Associations]
+text/plain=code.desktop;gvim.desktop;
+application/x-shellscript=code.desktop;gvim.desktop;
+application/zip=userapp-unzip-MLBEKZ.desktop;userapp-unzip-2DG1JZ.desktop;
+text/markdown=gvim.desktop;
+image/jpeg=firefox.desktop;feh.desktop;
+image/png=userapp-Bluetooth Device-NX33JZ.desktop;userapp-Bluetooth Device-CL99JZ.desktop;feh.desktop;
+
+[Default Applications]
+inode/directory=Thunar.desktop
+application=Thunar.desktop

@@ -1,0 +1,57 @@
+!!~/.Xresources
+!!update command: xrdb ~/.Xresources
+
+!comment out like this
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!Xcursor.theme:
+
+
+
+!xft options
+Xft.dpi:	89
+Xft.antialias:	1
+Xft.hinting:	1
+Xft.hintstyle:	hintfull
+
+
+
+
+!URxvt options
+
+URxvt.antialias:	true
+!fades text when unfocused
+URxvt*fading:		30
+
+!this is to enable japanese characters rendering
+URxvt.imLocale:	ja_JP.UTF-8
+
+!URxvt.font: 		xft:Terminus:style=Bold:size=12
+!URxvt.font: 		xft:Terminus:size=1
+URxvt.font:		xft:Iosevka Term:style=Regular:size=11,\
+			xft:Symbola:style=Regular:size=11,\
+			xft:Ricty Diminished:style=Regular
+
+URxvt.boldFont:		xft:Iosevka Term:style=Bold:size=11,\
+			xft:Symbola:style=Regular:size=11,\
+			xft:Ricty Diminished:style=Bold
+
+URxvt.italicFont:	xft:Iosevka Term:style=Italic:size=11,\
+			xft:Symbola:style=Regular:size=11,\
+			xft:Ricty Diminished:style=Regular
+
+!spacing options
+URxvt.letterSpace:	+1
+
+URxvt.geometry:		82x24
+URxvt.internalBorder:	12
+
+!scroll buffer bigger
+URxvt.saveLines:	16384
+URxvt*scrollTtyOutput:  false
+
+!hopefully this will get rid of the ugly scrollbar and pad the prompt a bit
+URxvt.scrollBar:	false
+URxvt.cursorBlink:	true
+URxvt.cursorUnderline:	true
+

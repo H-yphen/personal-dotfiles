@@ -1,0 +1,161 @@
+* Background:
+
+Dell inspiron 3147 laptop
+"BIOS" is A12, it's actually UEFI
+secure boot, dell recovery, and legacy options are all disabled
+
+Debian 9 testing and the kernel is 4.16.0-2-amd64
+
+sudo pm-hibernate causes my system to freeze in a weird state where
+the power is seemingly off
+screen is blank, fan stopped, and so is the HDD
+attempting to "wake" the device by pressing the power button does nothing
+a hard reset must be done, only then can I boot.
+And when I do, strange enough, the system resumes.
+
+this issue happened on windows before, with the release of the A10 bios, only hibernation worked
+attempting to put the device to sleep resulted in similar reaction where you can't power up
+dell user forums decided that it's a bios bug that only affects sleep
+this behaviour kept persisting with my previous Ubuntu 16.04 LTS install, can't sleep (or rather suspend), but hibernation works.
+now on Debian both give me the same result.
+
+* here is my log:
+
+Jun 12 11:36:25 Botnet kernel: [11746.719185] PM: hibernation entry
+Jun 12 11:36:25 Botnet kernel: [11746.719669] PM: Syncing filesystems ...
+Jun 12 13:50:48 Botnet kernel: [11746.826040] PM: done.
+Jun 12 13:50:50 Botnet kernel: [11746.826043] Freezing user space processes ... (elapsed 0.002 seconds) done.
+Jun 12 13:50:50 Botnet kernel: [11746.828242] OOM killer disabled.
+Jun 12 13:50:50 Botnet kernel: [11746.832306] PM: Preallocating image memory... done (allocated 399007 pages)
+Jun 12 13:50:50 Botnet kernel: [11754.041485] PM: Allocated 1596028 kbytes in 7.20 seconds (221.67 MB/s)
+Jun 12 13:50:50 Botnet kernel: [11754.041486] Freezing remaining freezable tasks ... (elapsed 0.499 seconds) done.
+Jun 12 13:50:50 Botnet kernel: [11754.541679] Suspending console(s) (use no_console_suspend to debug)
+Jun 12 13:50:50 Botnet kernel: [11754.549386] wlp1s0: deauthenticating from c8:0c:c8:b7:e7:f4 by local choice (Reason: 3=DEAUTH_LEAVING)
+Jun 12 13:50:50 Botnet kernel: [11755.878867] ACPI: EC: interrupt blocked
+Jun 12 13:50:50 Botnet kernel: [11755.879186] ACPI: Preparing to enter system sleep state S4
+Jun 12 13:50:50 Botnet kernel: [11755.884307] ACPI: EC: event blocked
+Jun 12 13:50:50 Botnet kernel: [11755.884312] ACPI: EC: EC stopped
+Jun 12 13:50:50 Botnet kernel: [11755.884315] PM: Saving platform NVS memory
+Jun 12 13:50:50 Botnet kernel: [11755.902661] Disabling non-boot CPUs ...
+Jun 12 13:50:50 Botnet kernel: [11755.918039] IRQ 87: no longer affine to CPU1
+Jun 12 13:50:50 Botnet kernel: [11755.919110] smpboot: CPU 1 is now offline
+Jun 12 13:50:50 Botnet kernel: [11755.942426] smpboot: CPU 2 is now offline
+Jun 12 13:50:50 Botnet kernel: [11755.965825] IRQ 18: no longer affine to CPU3
+Jun 12 13:50:50 Botnet kernel: [11755.965858] IRQ 88: no longer affine to CPU3
+Jun 12 13:50:50 Botnet kernel: [11755.965870] IRQ 89: no longer affine to CPU3
+Jun 12 13:50:50 Botnet kernel: [11755.966934] smpboot: CPU 3 is now offline
+Jun 12 13:50:50 Botnet kernel: [11755.971238] PM: Creating hibernation image:
+Jun 12 13:50:50 Botnet kernel: [11756.128096] PM: Need to copy 385599 pages
+Jun 12 13:50:50 Botnet kernel: [11755.971723] PM: Restoring platform NVS memory
+Jun 12 13:50:50 Botnet kernel: [11755.980694] ACPI: EC: EC started
+Jun 12 13:50:50 Botnet kernel: [11755.981369] Enabling non-boot CPUs ...
+Jun 12 13:50:50 Botnet kernel: [11755.981524] x86: Booting SMP configuration:
+Jun 12 13:50:50 Botnet kernel: [11755.981531] smpboot: Booting Node 0 Processor 1 APIC 0x2
+Jun 12 13:50:50 Botnet kernel: [11755.982358]  cache: parent cpu1 should not be sleeping
+Jun 12 13:50:50 Botnet kernel: [11755.983630] CPU1 is up
+Jun 12 13:50:50 Botnet kernel: [11755.983750] smpboot: Booting Node 0 Processor 2 APIC 0x4
+Jun 12 13:50:50 Botnet kernel: [11755.984508]  cache: parent cpu2 should not be sleeping
+Jun 12 13:50:50 Botnet kernel: [11755.985875] CPU2 is up
+Jun 12 13:50:50 Botnet kernel: [11755.985977] smpboot: Booting Node 0 Processor 3 APIC 0x6
+Jun 12 13:50:50 Botnet kernel: [11755.986823]  cache: parent cpu3 should not be sleeping
+Jun 12 13:50:50 Botnet kernel: [11755.988324] CPU3 is up
+Jun 12 13:50:50 Botnet kernel: [11755.996741] ACPI: Waking up from system sleep state S4
+Jun 12 13:50:50 Botnet kernel: [11756.435588] acpi LNXPOWER:06: Turning ON
+Jun 12 13:50:50 Botnet kernel: [11756.435854] ACPI: EC: interrupt unblocked
+Jun 12 13:50:50 Botnet kernel: [11756.597237] ACPI: EC: event unblocked
+Jun 12 13:50:50 Botnet kernel: [11756.597820] usb usb1: root hub lost power or was reset
+Jun 12 13:50:50 Botnet kernel: [11756.597831] usb usb2: root hub lost power or was reset
+Jun 12 13:50:50 Botnet kernel: [11756.598423] ACPI: button: The lid device is not compliant to SW_LID.
+Jun 12 13:50:50 Botnet kernel: [11756.612604] sd 0:0:0:0: [sda] Starting disk
+Jun 12 13:50:50 Botnet kernel: [11756.634969] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11756.659501] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11756.683873] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11756.710416] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11756.740683] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11756.770541] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11756.800989] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11756.832233] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11756.862077] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11756.891729] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11756.921200] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11756.927379] ata1: SATA link up 3.0 Gbps (SStatus 123 SControl 300)
+Jun 12 13:50:50 Botnet kernel: [11756.929158] ata1.00: ACPI cmd 00/00:00:00:00:00:a0 (NOP) rejected by device (Stat=0x51 Err=0x04)
+Jun 12 13:50:50 Botnet kernel: [11756.931311] ata1.00: ACPI cmd 00/00:00:00:00:00:a0 (NOP) rejected by device (Stat=0x51 Err=0x04)
+Jun 12 13:50:50 Botnet kernel: [11756.931620] ata1.00: configured for UDMA/133
+Jun 12 13:50:50 Botnet kernel: [11756.951096] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11756.955705] usb 1-4: reset high-speed USB device number 3 using xhci_hcd
+Jun 12 13:50:50 Botnet kernel: [11756.980908] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.011085] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.041384] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.071312] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.101527] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.130771] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.160855] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.190258] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.219971] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.231888] usb 1-3: reset high-speed USB device number 2 using xhci_hcd
+Jun 12 13:50:50 Botnet kernel: [11757.249171] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.279261] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.308662] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.338320] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.367836] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.397218] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.426585] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.455521] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.479956] usb 1-4.2: reset full-speed USB device number 4 using xhci_hcd
+Jun 12 13:50:50 Botnet kernel: [11757.484896] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.514575] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.544462] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.574378] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.603094] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.629081] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.655172] i2c_designware 80860F41:00: timeout waiting for bus ready
+Jun 12 13:50:50 Botnet kernel: [11757.681523] i2c_designware 80860F41:00: timeout waiting for bus ready
+and so on until I shut down...
+
+
+* If I have a terminal open, I get these:
+
+Message from syslogd@Botnet at Jun 12 14:48:26 ...
+ kernel:[ 3070.288087] Uhhuh. NMI received for unknown reason 3c on CPU 0.
+
+Message from syslogd@Botnet at Jun 12 14:48:26 ...
+ kernel:[ 3070.288089] Do you have a strange power saving mode enabled?
+
+Message from syslogd@Botnet at Jun 12 14:48:26 ...
+ kernel:[ 3070.288090] Dazed and confused, but trying to continue
+
+
+
+* Output of cat /sys/power/disk
+
+[platform] shutdown reboot suspend test_resume
+
+* attempting to change it:
+su
+echo shutdown > /sys/power/disk
+echo disk > /sys/power/state
+
+works. And I am able to wake without a hard reset.
+However, if I journalctl right after,
+I find it filled again with the i2c_designware error from earlier
+and I still get the Dazed and confused error.
+
+a reboot afterwards returns the choice back to platform.
+
+
+
+* New issue:
+/var/log/messages
+
+usb 1-4.3: reset full-speed USB device number 5 using xhci_hcd
+
+this repeated a lot before my computer froze
+
+
+
+* attempting to disable sleep
+sudo systemctl mask sleep.target suspend.target hybrid-sleep.target
+also
+/etc/systemd/logind.conf
+there are options here I think I edited earlier

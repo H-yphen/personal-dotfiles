@@ -1,0 +1,461 @@
+# i3 config file (v4)
+# keyboard layout changes will affect this
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+## To debug a command run it as follows:
+#i3 restart
+#<command>
+#sleep 3;
+#i3-dump-log > /tmp/i3.log
+
+##################################################################################
+
+## Quick Access Settings
+
+# set stables
+set $alt Mod1
+set $mod Mod4
+
+# set classes and defaults
+set $term urxvt
+set $browser firefox
+set $editor code
+#
+set $termClass URxvt
+set $browserClass Firefox
+set $editorClass Code
+
+# Transparency reference
+# 100% — FF
+# 95%  — F2
+# 90%  — E6
+# 85%  — D9
+# 80%  — CC
+# 75%  — BF
+# 70%  — B3
+# 65%  — A6
+# 60%  — 99
+# 55%  — 8C
+# 50%  — 80
+# 45%  — 73
+# 40%  — 66
+# 35%  — 59
+# 30%  — 4D
+# 25%  — 40
+# 20%  — 33
+# 15%  — 26
+# 10%  — 1A
+# 5%   — 0D
+# 0%   — 00
+
+
+# window colors are HEX
+set $clrBrd     #07080C
+set $clrBgd     #07080C
+set $clrFoc     #554458
+set $clrInd     #716D7C
+set $clrUrg     #AF2E17
+set $clrTxt     #F2BDB3
+set $clrFTx     #F6DDDB
+
+# bar colors are #RRGGBBAA
+set $barBgd     #07080C60
+set $barFoc     #07080C60
+set $barUrg     #AF2E17FF
+set $barTxt     #F2BDB3C9
+set $barFTx     #E8E3E3FF
+set $barUTx     #E8E3E3FF
+set $Transp     #00000000
+
+
+# set gaps
+gaps inner 10
+gaps outer 13
+
+set $borderwidth 4
+hide_edge_borders smart
+
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:<family1,family2 [style1 style2]> <size>
+font pango: Iosevka Term, Terminus, System San Francisco Display, FontAwesome 12
+
+# wpg does those automatically now + colour schemes for terminal windows
+set $wallpaper ~/.config/wpg/wp_init.sh
+
+# set wallpaper
+# exec_always --no-startup-id feh --bg-fill ~/.config/i3bg.*
+
+
+# set colours for the i3 windows
+# class                 borders         background      text            split indicator child_border
+client.focused          $clrFoc         $clrBgd         $clrTxt         $clrInd         $clrFoc
+client.focused_inactive $clrBgd         $clrBgd         $clrTxt         $clrBgd         $clrBgd
+client.unfocused        $clrBgd         $clrBgd         $clrTxt         $clrBgd         $clrBgd
+client.urgent           $clrUrg         $clrBgd         $clrTxt         $clrUrg         $clrUrg
+client.placeholder      #000000       #0c0c0c       $clrTxt         #000000       #0c0c0c
+
+# for windows that don't render entirely, try transparency
+client.background       #00000000
+
+
+
+# rofi command
+# set $rofi rofi -theme .config/rofi/mytheme.rasi -show run
+set $rofi rofi -show run
+
+#################################################################################
+
+
+# status bar
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+
+bar {
+        # initialize
+        # id <bar_id> (for multiple configs in the config file, each given an id)
+	status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        i3bar_command i3bar -t
+        
+        # geometry
+        height 20
+	#position top
+        #tray_padding 0
+
+        # workspaces
+        strip_workspace_numbers yes
+        
+        colors{
+                # event                 Border          BG              Text                 
+                background                              $barBgd
+
+                statusline                                              $barTxt
+                focused_statusline                                      $barFTx  
+                separator                                               $barBgd                   
+
+                focused_workspace       $barFoc         $barFoc         $barFTx
+                inactive_workspace      $barBgd         $barBgd         $barTxt
+                urgent_workspace        $barTxt         $barUrg         $barUTx
+
+                binding_mode            $barTxt         $barUrg         $barUTx         
+        }
+}
+
+
+##################################################################################
+
+## Defaults (edited some) - it is advised to keep them as is for layout effeciency
+
+# set urgent window jumper
+bindsym $mod+Tab [urgent=latest] focus
+
+# lock screen
+bindsym $mod+Escape exec --no-startup-id i3lock-fancy
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+#floating_modifier $alt
+
+# start a terminal
+bindsym $mod+x exec --no-startup-id $term
+# or a floating one
+bindsym $mod+z exec --no-startup-id $term -name floated
+
+# kill focused window
+bindsym $mod+q kill
+
+# start #dmenu# rofi (a program launcher)
+bindsym $mod+Return exec --no-startup-id  $rofi
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split orientation toggle
+bindsym $mod+v split t
+bindsym $mod+t split t
+
+# enter fullscreen mode for the focused container
+bindsym $mod+F11 fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# reload the configuration file
+bindsym $mod+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+
+###################################################################################
+
+## Workspaces
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1: General"
+set $ws2 "2: Shells"
+set $ws3 "3: Browser"
+set $ws4 "4: Code"
+set $ws5 "5: Files"
+set $ws6 "6: Other"
+set $ws7 "7: Edit" 
+set $ws8 "8: Rice"
+set $ws9 "9: Chat"
+set $ws10 "10: Music"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# ws specific gaps
+# workspace $ws3 gaps inner 0
+# workspace $ws3 gaps outer 0
+
+# ws bound programs
+#assign [class="$term"] $ws2
+assign [class="$editorClass"] $ws4
+assign [class="$browserClass"] $ws3
+#assign doesn't seem to work on instances
+#assign [class=""] $ws5
+#assign [class=""] $ws6
+assign [class="Gimp"] $ws7
+#assign [class=""] $ws8
+assign [class="discord"] $ws9
+
+
+
+################################################################################
+
+## dynamic functions
+
+# resize window (you can also use the mouse for that)
+mode "Resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 1 px or 1 ppt
+        bindsym k resize grow height 1 px or 1 ppt
+        bindsym l resize shrink height 1 px or 1 ppt
+        bindsym semicolon resize grow width 1 px or 1 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 3 px or 3 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 3 px or 3 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+        # right resize has to be >= 10 to respect URxvt's accepted resize hints
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "Resize"
+
+
+
+# i3 gaps mode
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+g mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "scrot" {
+        bindsym Insert exec --no-startup-id "scrot -ub"
+        bindsym Delete exec --no-startup-id "sleep 0.3; scrot -s"
+        bindsym Return exec --no-startup-id "scrot"
+        bindsym Escape mode "default"
+        bindsym Print mode "default"
+}
+bindsym Print mode "scrot"
+
+###########################################################################################
+## Window management
+## Reference: use xprop/xwininfo
+#         class (the second part of WM_CLASS).
+# Use the special value __focused__ to match all windows having the same window class as the currently focused window.
+#         instance (the first part of WM_CLASS).
+# Use the special value __focused__ to match all windows having the same window instance as the currently focused window.
+#         window_role (WM_WINDOW_ROLE).
+# Use the special value __focused__ to match all windows having the same window role as the currently focused window.
+#         window_type (_NET_WM_WINDOW_TYPE). 
+# Possible values are normal, dialog, utility, toolbar, splash, menu, dropdown_menu, popup_menu, tooltip and notification.
+#         id
+# Compares the X11 window ID, which you can get via xwininfo for example.
+#         title
+# Compares the X11 window title (_NET_WM_NAME or WM_NAME as fallback). 
+# Use the special value __focused__ to match all windows having the same window title as the currently focused window.
+#         urgent
+# Compares the urgent state of the window. Can be "latest" or "oldest". Matches the latest or oldest urgent window, respectively. (The following aliases are also available: newest, last, recent, first)
+#         workspace
+# Compares the workspace name of the workspace the window belongs to. Use the special value __focused__ to match all windows in the currently focused workspace.
+#         con_mark
+# Compares the marks set for this container, see [vim_like_marks]. A match is made if any of the container’s marks matches the specified mark.
+#         con_id
+# Compares the i3-internal container ID, which you can get via the IPC interface. Handy for scripting. Use the special value __focused__ to match only the currently focused window.
+#         floating
+# Only matches floating windows. This criterion requires no value.
+#         tiling
+# Only matches tiling windows. This criterion requires no value.
+
+# The criteria class, instance, role, title, workspace and mark are actually regular expressions (PCRE). See pcresyntax(3) or perldoc perlre for information on how to use them.
+
+# TL;DR :
+# class
+# instance
+# window_role
+# window_type
+# id
+# title
+# urgent
+# workspace
+# con_mark
+# con_id
+# floating
+# tiling
+
+# disable titlebars (to get rid of wallpaper black bar bug and other inconsistencies) and set borders
+for_window [class="^.*"] border pixel $borderwidth
+for_window [class="i3-frame"] border pixel none
+
+
+# set floating window rule
+for_window [instance="floated"] floating enable
+for_window [class="Gpick"] floating enable
+for_window [class="Wpg"] floating enable
+
+for_window [class="Gimp"] move workspace $ws7
+for_window [class="Gimp" title="Layers - Brushes"] floating disable
+for_window [class="Gimp" title="Toolbox - Tool Options"] floating disable
+
+for_window [class="URxvt" title="ranger"] move window to workspace $ws5 
+for_window [class="URxvt" title="cmus v2.7.0"] move window to workspace $ws10
+#for_window [class=""] floating enable
+#for_window [class="^.*" title=""] floating enable
+
+############################################################################################
+
+## startup applications <
+exec --no-startup-id compton -b --config ~/.config/compton.conf
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id bash ~/.config/scripts/i3-battery-popup -L 15 -l 5 -n
+exec --no-startup-id "$wallpaper" #; sleep 1; $term -e ranger & $term -e cmus"
+#exec --no-startup-id "sleep 1; $term -e mount /dev/sda5" #mount windows on startup #TODO stop it from asking for authentication to automate the mounting process
+
+
+###########################################################################################
+
+## extra keybindings ( media, brightness, etc)
+# TODO find your media control key names
+
+###########################################################################################
+## TODO
+# battery notifications
+# rofi config
+# urxvt configs
+# network control applet with Certificates, PEAP and MSchap support
+# clipboard manager
+# an alternative way to colourscheme without wpg

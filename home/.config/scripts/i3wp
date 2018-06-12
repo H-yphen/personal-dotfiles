@@ -1,0 +1,6 @@
+#!/bin/bash
+
+wallpaperfile=$1
+
+cp $1 ~/.config/i3bg.now
+
