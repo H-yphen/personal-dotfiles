@@ -33,7 +33,11 @@ xmodmap -e "keycode 94 shift = backslash bar"
 
 
 
-# mount C://OS
+# running services
+#xfce4-power-manager
+#bash ~/.config/scripts/i3-battery-popup -L 15 -l 5 -n &
+compton -b --config ~/.config/compton.conf
+nm-applet &
 
 
 
@@ -47,4 +51,4 @@ udiskie -n &
 
 
 # finally the hanged process
-exec i3
+# exec i3

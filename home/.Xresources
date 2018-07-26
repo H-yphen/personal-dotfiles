@@ -26,13 +26,14 @@ URxvt*fading:		30
 !this is to enable japanese characters rendering
 URxvt.imLocale:	ja_JP.UTF-8
 
-!URxvt.font: 		xft:Terminus:style=Bold:size=12
-!URxvt.font: 		xft:Terminus:size=1
-URxvt.font:		xft:Iosevka Term:style=Regular:size=11,\
+
+URxvt.font: 		xft:Terminus:size=13,\
+!URxvt.font:		xft:Iosevka Term:style=Regular:size=11,\
 			xft:Symbola:style=Regular:size=11,\
 			xft:Ricty Diminished:style=Regular
 
-URxvt.boldFont:		xft:Iosevka Term:style=Bold:size=11,\
+URxvt.boldFont: 	xft:Terminus:style=Bold:size=13,\
+!URxvt.boldFont:	xft:Iosevka Term:style=Bold:size=11,\
 			xft:Symbola:style=Regular:size=11,\
 			xft:Ricty Diminished:style=Bold
 
@@ -41,7 +42,7 @@ URxvt.italicFont:	xft:Iosevka Term:style=Italic:size=11,\
 			xft:Ricty Diminished:style=Regular
 
 !spacing options
-URxvt.letterSpace:	+1
+URxvt.letterSpace:	-0
 
 URxvt.geometry:		82x24
 URxvt.internalBorder:	12

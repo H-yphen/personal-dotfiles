@@ -40,7 +40,7 @@ alias py=python3
 alias pip=pip3
 #complete -F _pip_completion pip ##doesn't work for some goddamn reason
 
-alias i3config='code ~/.config/i3/config'
+alias i3config='vim ~/.config/i3/config'
 #alias pape='~/.config/scripts/i3wp'
 alias lock=i3lock-fancy
 alias home='cd ~'
