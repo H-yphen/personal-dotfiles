@@ -1,2 +1,5 @@
 Check out ncmpcpp and compare to cmus
 Try xv instead of feh
+The font is Source Code Pro (Regular, size 9); looks great for terminal
+XFCE can be riced. No need to go the regular i3 route. Although tbf, tiling WMs and ready workspaces have a certain appeal when compared to DEs. Explore something more flexible than i3.
+compiz-reloaded looks like a good candidate to replace compton
