@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=8000
+HISTFILESIZE=16000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -85,7 +85,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like

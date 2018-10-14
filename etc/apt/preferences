@@ -1,0 +1,10 @@
+# https://manpages.debian.org/stretch/apt/apt_preferences.5.en.html
+    
+Package: *
+Pin: release a=testing
+Pin-Priority: 900
+
+Package: *
+Pin: release a=unstable
+Pin-Priority: 100
+

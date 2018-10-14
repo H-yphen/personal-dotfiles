@@ -31,8 +31,8 @@ alias apt-aurm='sudo apt autoremove'
 alias apt-rm='sudo apt remove'
 complete -c apt-rm apt-aurm
 
-alias apt-up='sudo apt update'
-
+alias apt-upd='sudo apt update'
+alias apt-upg='sudo apt dist-upgrade'
 
 
 # Personal alias
@@ -43,5 +43,4 @@ alias pip=pip3
 alias i3config='vim ~/.config/i3/config'
 #alias pape='~/.config/scripts/i3wp'
 alias lock=i3lock-fancy
-alias home='cd ~'
 

@@ -99,7 +99,7 @@
       Pin-Priority: 900
 
       Package: *
-      Pin: release a=testing
+      Pin: release a=unstable
       Pin-Priority: 100
     #
 
