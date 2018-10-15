@@ -1,0 +1,1 @@
+make sure you have autoreconf installed (xutils-dev + aptdh-autoreconf and autotools-dev)
