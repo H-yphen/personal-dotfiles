@@ -1,1 +1,2 @@
 make sure you have autoreconf installed (xutils-dev + aptdh-autoreconf and autotools-dev)
+I have found that the best way to install i3-gaps on debian is with i3-gaps-deb
