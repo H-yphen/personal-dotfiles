@@ -116,5 +116,15 @@ COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
 }
 complete -o default -F _pip_completion pip3
 
+# pywal custom wallpaper style
+
+#wal-*mode*(){
+#	wal -n -i "$@"
+#	feh --bg-*mode* "$(< "${HOME}/.cache/wal/wal")"
+#}
+
+# vim mode
+set -o vi
+
 #export variables for ranger
 export RANGER_LOAD_DEFAULT_RC=FALSE

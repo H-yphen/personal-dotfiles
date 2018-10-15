@@ -42,5 +42,6 @@ alias pip=pip3
 
 alias i3config='vim ~/.config/i3/config'
 #alias pape='~/.config/scripts/i3wp'
+alias pape='wal -i'
 alias lock=i3lock-fancy
 

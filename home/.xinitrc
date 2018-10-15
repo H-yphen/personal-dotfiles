@@ -24,10 +24,12 @@ xrdb ~/.Xresources
 
 
 
-# map keyboard
+# map keyboard and config typematics
 xmodmap -e "keycode 51 shift = grave asciitilde"
 xmodmap -e "keycode 49 shift = less greater"
 xmodmap -e "keycode 94 shift = backslash bar"
+
+xset r rate 240 30
 
 # map mouse
 
@@ -37,12 +39,15 @@ xmodmap -e "keycode 94 shift = backslash bar"
 #xfce4-power-manager
 #bash ~/.config/scripts/i3-battery-popup -L 15 -l 5 -n &
 compton -b --config ~/.config/compton.conf
-nm-applet &
+#nm-applet &
 
+
+# Pywal
+wal -R
 
 
 # udiskie for auto-mounting flash drives
-udiskie -n &
+#udiskie -n &
 
 
 
