@@ -121,6 +121,9 @@
   
   ## install ntpupdate for internet clock
   ## install localepurge to get rid of unnecessary locales
+  ## install sound and video drivers
+  	# Sound: alsa-utils
+	# Video: xf86-video-intel mesa
   ## install xorg and a wm
 #
 
