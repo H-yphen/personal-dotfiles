@@ -151,3 +151,9 @@ Parameter settings:
     MiddleButtonAreaRight   = 0
     MiddleButtonAreaTop     = 0
     MiddleButtonAreaBottom  = 0
+    
+    # ---------------------------------------------
+    
+    # Add numbers to Vim
+    set number
+    
