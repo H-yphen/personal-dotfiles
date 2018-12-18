@@ -1,0 +1,5 @@
+- If you edit a config file and you want to keep track of all the config files you edited, you can leave a special string in a comment to grep on later.
+  ex: I edit /etc/fstab so I leave #EDITED on the file (preferably the same place I edited) and now I can do a system-wide grep of all the files that contain #EDITED to see the things I've done
+  
+- Building maintenance is important. It is advised to keep all your source code together in a folder so that you can access any program's makefile and find out where it spat its files so that you can keep your system clean and maintainable
+  note: it is generally cleaner to turn your source code into a package before installing, as it makes managing things cleaner and more consistent. Plus, depends and versioning.
