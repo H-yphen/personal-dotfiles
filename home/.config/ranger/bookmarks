@@ -1,0 +1,4 @@
+~:$HOME
+.:$HOME/.config
+..:$HOME/Git/Downloads/personal-dotfiles
+

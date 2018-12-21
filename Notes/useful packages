@@ -1,0 +1,8 @@
+This is a list of packages that are very useful to have on board:
+
+liquidprompt -- better bash prompt
+python3-pygments -- syntax highlighter that works like cat (pygmentize -g <file>)
+
+
+
+silversearcher-ag -- aka the silver searcher, much faster and friendlier than find

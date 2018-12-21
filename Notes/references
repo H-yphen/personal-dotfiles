@@ -174,7 +174,19 @@ https://superuser.com/questions/789448/choosing-between-bashrc-profile-bash-prof
 
   >  ~/.profile has the stuff NOT specifically related to bash, such as environment variables (PATH and friends)
 
-  >  ~/.bashrc has anything you'd want at an interactive command line. Command prompt, EDITOR variable, bash aliases for my use
+  >  ~/.bashrc has anything you\'d want at a logged in interactive command line. Command prompt, user-specific EDITOR variable, bash aliases for my use, etc...
+It\'s preferred if you source .bash_aliases to .bashrc instead of using bashrc directly for aliases. 
+It\'s also better if you create ~/.bashrc.d/ and divide your configs across different files then source through bashrc
+
+if [ -f ~/.bash_aliases]; then
+	. ~/.bash_aliases
+fi
+
+if [ -d ~/.bash.d ]; then
+    for i in ~/.bash.d/*; do
+        [ -f "${i}" ] && source "${i}"
+    done
+fi
 
 A few other notes:
 
@@ -370,11 +382,13 @@ obexfs (probably)
 
 # packages:
 
-music: cmus
+music: cmus/ncmpcpp
 video: mpv
 bittorrent: transmission
 file manager:
 	gui: Thunar
 	cli: ranger
 audio controls: pulseaudio installed as user not root
+audio driver: alsa-utils
+
 

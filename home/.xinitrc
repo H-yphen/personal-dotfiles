@@ -42,9 +42,6 @@ compton -b --config ~/.config/compton.conf
 #nm-applet &
 
 
-# Pywal
-wal -R
-
 
 # udiskie for auto-mounting flash drives
 #udiskie -n &

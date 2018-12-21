@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/maki/.config/i3'
+let g:netrw_dirhist_2='/home/maki/.config/neofetch'
+let g:netrw_dirhist_3='/usr/share/bash-completion'
+let g:netrw_dirhist_4='/etc/vim'
