@@ -36,3 +36,7 @@ else
 	[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx
 fi
 
+
+if [ -f "/bin/vim" ] ; then
+	export $EDITOR="/usr/bin/vim"
+fi

@@ -392,3 +392,8 @@ audio controls: pulseaudio installed as user not root
 audio driver: alsa-utils
 
 
+#configure URXVT to behave more intuitively (like gnome terminal for example)
+https://superuser.com/questions/1247281/how-to-configure-rxvt-unicode-to-behave-similar-to-gnome-terminal-or-others-f
+
+#piping commands the guide
+https://askubuntu.com/questions/420981/how-do-i-save-terminal-output-to-a-file
