@@ -73,16 +73,17 @@ gaps inner 10
 gaps outer 13
 
 set $borderwidth 4
-hide_edge_borders smart
+# TODO: make it possible to only show borders in the terminal, no other window
+# hide_edge_borders smart
 
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango:<family1,family2 [style1 style2]> <size>
-font pango: Iosevka Term, Terminus, System San Francisco Display, FontAwesome 12
+font pango: Terminus, FontAwesome 12
 
 # wpg does those automatically now + colour schemes for terminal windows
-set $wallpaper ~/.config/wpg/wp_init.sh
+# set $wallpaper ~/.config/wpg/wp_init.sh
 
 # set wallpaper
 # exec_always --no-startup-id feh --bg-fill ~/.config/i3bg.*
@@ -167,7 +168,9 @@ bindsym $mod+z exec --no-startup-id $term -name floated
 bindsym $mod+q kill
 
 # start #dmenu# rofi (a program launcher)
-bindsym $mod+Return exec --no-startup-id  $rofi
+bindsym $mod+Enter exec --no-startup-id $rofi # TODO: try just mod
+bindsym $mod+d exec --no-startup-id $rofi
+bindsym $mod+w exec --no-startup-id $rofi
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -198,17 +201,20 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# replace windows while maintaining the same layout
+bindsym $mod+s mark --add quickswap
+bindsym $mod+a swap container with mark quickswap; [con_mark="quickswap"] focus
+
 # split orientation toggle
-bindsym $mod+v split t
 bindsym $mod+t split t
 
-# enter fullscreen mode for the focused container
+# enter fullscreen mode for the focused container (maximize) TODO: change maximize to mod+plus and minimize (move to ws6) mod+minus
 bindsym $mod+F11 fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+b layout stacking
+bindsym $mod+v layout tabbed
+bindsym $mod+n layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -217,10 +223,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+ focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+#bindsym $mod+ focus child
 
 # reload the configuration file
 bindsym $mod+c reload
@@ -242,7 +248,7 @@ set $ws2 "2: Shells"
 set $ws3 "3: Browser"
 set $ws4 "4: Code"
 set $ws5 "5: Files"
-set $ws6 "6: Other"
+set $ws6 "6: Minimized"
 set $ws7 "7: Edit" 
 set $ws8 "8: Rice"
 set $ws9 "9: Chat"
@@ -316,7 +322,7 @@ mode "Resize" {
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+        bindsym $mod+d mode "default"
 }
 
 bindsym $mod+r mode "Resize"
@@ -363,14 +369,18 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-mode "scrot" {
+set $mode_scrot "[scrot mode]"
+mode "$mode_scrot" {
         bindsym Insert exec --no-startup-id "scrot -ub"
         bindsym Delete exec --no-startup-id "sleep 0.3; scrot -s"
-        bindsym Return exec --no-startup-id "scrot"
-        bindsym Escape mode "default"
-        bindsym Print mode "default"
+        bindsym Print exec --no-startup-id "scrot"
+        
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+        bindsym Shift+Print mode "default"
 }
-bindsym Print mode "scrot"
+bindsym Shift+Print mode "$mode_scrot"
+bindsym Print exec --no-startup-id "scrot"
 
 ###########################################################################################
 ## Window management
@@ -449,13 +459,16 @@ exec --no-startup-id "$wallpaper" #; sleep 1; $term -e ranger & $term -e cmus"
 ###########################################################################################
 
 ## extra keybindings ( media, brightness, etc)
-# TODO find your media control key names
+# TODO find your media control key names and map them
+# alt-shift for keymap switch
+
 
 ###########################################################################################
 ## TODO
-# battery notifications
+# low battery notifications
 # rofi config
 # urxvt configs
 # network control applet with Certificates, PEAP and MSchap support
 # clipboard manager
-# an alternative way to colourscheme without wpg
+# an alternative way to have a choice to colourscheme automatically on set wallpaper, and to save colourschemes (maybe without wpg)
+#  -- an autoschemer should change urxvt, window, bar, and rofi colours in real time (or at least with an application restart) 
