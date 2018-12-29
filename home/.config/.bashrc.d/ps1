@@ -1,0 +1,98 @@
+# Define your colors for ease of use
+
+COL1='\e[30m' #bg color
+COL2='\e[31m'
+COL3='\e[32m'
+COL4='\e[33m'
+COL5='\e[34m'
+COL6='\e[35m'
+COL7='\e[36m'
+COL8='\e[37m' #fg color
+
+COL9='\e[90m' #bg light
+COL10='\e[91m'
+COL11='\e[92m'
+COL12='\e[93m'
+COL13='\e[94m'
+COL14='\e[95m'
+COL15='\e[96m'
+COL16='\e[97m' #fg light
+
+BOLD='\e[1m'
+INVR='\e[7m'
+BLIN='\e[5m'
+
+RESET='\e[0m'
+ENDSQ='\e[m'
+
+# get current branch in git repo
+function parse_git_branch() {
+	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	if [ ! "${BRANCH}" == "" ]
+	then
+		STAT=`parse_git_dirty`
+		echo "( ${BRANCH}:${STAT})"
+	else
+		echo ""
+	fi
+}
+
+# get current status of git repo
+function parse_git_dirty {
+	status=`git status 2>&1 | tee`
+	dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
+	untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
+	ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
+	newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
+	renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
+	deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
+	bits=''
+	if [ "${renamed}" == "0" ]; then
+		bits=" ${bits}"
+	fi
+	if [ "${ahead}" == "0" ]; then
+		bits=" ${bits}"
+	fi
+	if [ "${newfile}" == "0" ]; then
+		bits=" ${bits}"
+	fi
+	if [ "${untracked}" == "0" ]; then
+		bits=" ${bits}"
+	fi
+	if [ "${deleted}" == "0" ]; then
+		bits=" ${bits}"
+	fi
+	if [ "${dirty}" == "0" ]; then
+		bits=" ${bits}"
+	fi
+	if [ ! "${bits}" == "" ]; then
+		echo " ${bits}"
+	else
+		echo ""
+	fi
+}
+
+function nonzero_return() {
+	RETVAL=$?
+	if [ $RETVAL -ne 0 ];then
+		echo " $RETVAL "
+	else
+		echo ""
+	fi
+}
+
+
+UC=$COL11
+SHS="\$" # \$ means $ unless root (#)
+WD="\w"
+
+# root's color. move to root's .bashrc
+[ $UID -eq "0" ]&& UC=$BLIN$INVR$COL15
+#TODO: Find a way to make this work with dark AND light col schemes
+#hint: if bg of light theme = fg color code, then do the dark scheme
+export PS1="\[${UC}${BOLD}\][\h_\u]\[${ENDSQ}\] ${COL8}\`parse_git_branch\`${COL4}\n  ├[ ${COL13}${WD}\n  ${COL4}└─[\[${COL10}${BOLD}\]${SHS}\`nonzero_return\`\[${ENDSQ}\]${COL4}  ${RESET}"
+
+export PS2='${COL4}•${RESET}'
+
+export PROMPT_DIRTRIM=2 #shortens the dir structure
+
