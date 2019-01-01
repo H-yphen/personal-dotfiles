@@ -8,6 +8,10 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+# specific to the solus install:
+source /usr/share/defaults/etc/profile
+#
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -30,11 +34,11 @@ fi
 # startx on login
 # xdg vtnr is the vertual terminal number -eq equals to 1
 
-if [ -f "$PATH/.xinitrc" ] ; then
-	[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx $PATH/.xinitrc
-else
-	[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx
-fi
+# if [ -f "$PATH/.xinitrc" ] ; then
+# 	[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx $PATH/.xinitrc
+# else
+# 	[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx
+# fi
 
 
 if [ -f "/bin/vim" ] ; then

@@ -16,22 +16,30 @@
 
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
-runtime! debian.vim
+
+" runtime! debian.vim
 
 " Vim will load $VIMRUNTIME/defaults.vim if the user does not have a vimrc.
 " This happens after /etc/vim/vimrc(.local) are loaded, so it will override
 " any settings in these files.
 " If you don't want that to happen, uncomment the below line to prevent
 " defaults.vim from being loaded.
+
 let g:skip_defaults_vim = 1
 
 
 " Uncomment the next line to make Vim more Vi-compatible
 " NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
 " options, so any other options should be set AFTER setting 'compatible'.
+
 "set compatible "If you want to suffer with vi's outdated interface, masochist.
 
 
+" Source a global configuration file if available
+
+if filereadable("/etc/vim/vimrc.local")
+  source /etc/vim/vimrc.local
+endif
 
 
 
@@ -78,6 +86,9 @@ let g:rehash256 = 1 "more accurate 256 colors for monokai
 
 """ Functional configs:
 
+" disable the annoying file~ backups
+set nobackup
+
 " load indentation rules and plugins according to the detected filetype.
 if has("autocmd")
   filetype plugin indent on
@@ -99,11 +110,7 @@ set mouse=a		" Enable mouse usage (all modes)
 set wildmenu		" Enable visual <tab> autocompletion
 set lazyredraw 		" Only redraw screen when you have to. Performance boost baby
 
-" Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif
-
 " Sudo write hack with tee > shortcut w!!
-cmap w!! w !sudo tee > dev/null %
+cmap w!! w !sudo tee > /dev/null %
+
 
