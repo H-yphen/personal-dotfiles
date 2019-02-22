@@ -1,0 +1,9 @@
+#!/bin/bash
+
+file=$1
+
+if [ -f $file ]
+	then echo "yes" 
+else 
+	echo "no" 
+fi

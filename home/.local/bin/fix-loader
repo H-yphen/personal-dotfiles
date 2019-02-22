@@ -1,0 +1,26 @@
+#!/bin/bash
+
+[[ $UID -ne 0 ]] && echo "must be root" && exit 1
+
+ESPdevice=$(lsblk --output LABEL,NAME --list --paths | grep ESP | grep -o "/dev/.*" --color=none)
+
+[[ -n $ESPdevice ]] || (echo "no ESP device found" && exit 2)
+echo "ESP device found: $ESPdevice"
+[[ -n $(find / -maxdepth 1 -name boot) ]] || (echo "dir /boot not found." && mkdir /boot)
+[[ -n $(find /boot -maxdepth 1 -empty) ]] || (echo "dir /boot not empty. Umount /boot first." && exit 3)
+echo "/boot found and is empty."
+
+(mount $ESPdevice /boot && echo "mounted ESP.") || echo "mounting problem."
+
+confpath=$(find /boot -name loader.conf -exec realpath {} \;)
+echo "conf: $confpath"
+cp $confpath $confpath~
+#TODO: check if conf already has the relevant configs, do nothing in that case
+#DONE:
+if [[ $( tail -n 3 $confpath) == "timeout 4\neditor no\nauto-firmware yes" ]]; then
+       	echo "already configured."
+else
+	echo -e "timeout 4\neditor no\nauto-firmware yes" >> $confpath
+fi
+
+umount $ESPdevice
