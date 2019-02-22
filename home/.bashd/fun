@@ -1,0 +1,33 @@
+# Bash functions
+# your functions should be advanced aliases 
+# that take params in reference positions
+
+del(){
+	IFS=$'\n' #handle spaces in filenames
+	# for arg in all args, 
+	# find the abspath of each arg, 
+	# echo the deletion info, 
+	# then "delete" the file by simply mv-ing it into trash
+	for i in $@; do
+		if [[ $i =~ (-h|--help) ]]; then 
+			echo -e "You are using del mode. \nYour files will be moved to wastebasket where they are retrievable. \nIf you want to rm, use /bin/rm. This is generally advised against."
+		elif [[ $i =~ ^-{1,2}[a-zA-Z0-9\'\"=._]+$ ]]; then
+			echo "Error: $i is an option. Del takes no options"
+		
+		elif [ -a $i ]; then
+			[[ -d $i ]]&& echo "Warning: $i is a directory. Removing recursively."
+			abspath=$(realpath -Ls $i)
+			basen=$(basename $abspath)
+			echo -e "[Trash Info]\nPath=$abspath\nDeletionDate=$(date '+%FT%T')" > $HOME/.local/share/Trash/info/$basen.trashinfo
+			/bin/mv $abspath -t $HOME/.local/share/Trash/files/
+		else
+			echo "Error: path $i does not exist."
+		fi
+	done
+
+	unset basen
+	unset abspath
+	unset i
+	unset IFS
+}
+

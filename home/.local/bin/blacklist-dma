@@ -1,0 +1,10 @@
+#!/bin/bash
+
+blacklist="/etc/modprobe.d/blacklist.conf"
+
+if [ ! -f $blacklist ]
+	then echo "blacklist dw_dmac\nblacklist dw_dmac_core" > $blacklist
+	exit 0 
+else
+	exit 0
+fi

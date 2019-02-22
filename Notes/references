@@ -397,3 +397,13 @@ https://superuser.com/questions/1247281/how-to-configure-rxvt-unicode-to-behave-
 
 #piping commands the guide
 https://askubuntu.com/questions/420981/how-do-i-save-terminal-output-to-a-file
+
+readlink -> follow symlinks
+stat -> find file status (like perms)
+
+# looping inside a file:
+while read i; do something ; done < filename
+
+# when using find 
+remember it goes like this: find path > expression > action
+never order it in any other way.
