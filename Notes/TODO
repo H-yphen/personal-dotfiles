@@ -1,7 +1,7 @@
 Check out ncmpcpp and compare to cmus
 Try xv(not the actual package name...) instead of feh
 The font is Source Code Pro (Regular, size 9); looks great for terminal
-XFCE can be riced. No need to go the regular i3 route. Although tbf, tiling WMs and ready workspaces have a certain appeal when compared to DEs. Explore something more flexible than i3.
+XFCE can be riced. No need to go the regular i3 route. Although tbf, tiling WMs and ready workspaces have a certain appeal when compared to DEs. Explore something more flexible than i3. openbox has a themeing file format and awesome has hackable by design notifiction API.
 compiz-reloaded looks like a good candidate to replace compton
       compiz-reloaded has a wm. Thus it can't work with i3/awesome
 multimedia keys: https://help.ubuntu.com/community/KeyTouch   -- The keyboard layout is US IBM Arabic 238_L

@@ -1,7 +1,16 @@
 This is a list of packages that are very useful to have on board:
 
+keepassxc -- a password database with password generation (diceware) abilities
 liquidprompt -- better bash prompt
 python3-pygments -- syntax highlighter that works like cat (pygmentize -g <file>)
 silversearcher-ag -- aka the silver searcher, much faster and friendlier than find
-command-not-found -- command suggestions
+command-not-found/shellcheck -- command suggestions
+figlet/toilet -- banners in terminal
 nethogs -- a small net top that associates traffic by process rather than port
+ocl-icd -- OpenCL video drivers for intel integrated graphics, helps a lot next to mesa. Your current hardware supports OpenCL not GL
+
+[pip]
+exrex -- a great tool that generates wordlists from regex
+diceware -- highly customizable diceware password generator
+lolcat -- RAINBOWS!
+magic-wormhole -- lan file exchange tool
