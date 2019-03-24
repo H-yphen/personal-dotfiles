@@ -1,14 +1,15 @@
 !rofi options
 
-rofi.modi:		window,run,drun
+rofi.modi:		window,run,drun,ssh
 rofi.matching:		fuzzy
+rofi.tokenize:		false
 !rofi.theme:		mytheme
-rofi.font:		Iosevka Term 15
-rofi.levenshtein-sort:	true
-rofi.lines:		3
-rofi.width: 100%
-rofi.padding: 500
-rofi.eh: 1
+rofi.font:		Source Code Pro Bold 15
+!rofi.levenshtein-sort:	true
+rofi.lines:		5
+rofi.width: 		100%
+rofi.padding: 		500
+rofi.eh: 		1
 
 rofi.hide-scrollbar:	true
 !rofi.separator-style:	none

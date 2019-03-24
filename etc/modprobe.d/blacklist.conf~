@@ -1,0 +1,3 @@
+blacklist dw_dmac
+blacklist dw_dmac_core
+blacklist i2c-hid

@@ -2,6 +2,8 @@
 # your functions should be advanced aliases 
 # that take params in reference positions
 
+
+
 del(){
 	IFS=$'\n' #handle spaces in filenames
 	# for arg in all args, 
@@ -31,3 +33,15 @@ del(){
 	unset IFS
 }
 
+
+
+vpn(){
+	pathto=$(realpath $1)
+	(sudo openvpn --daemon --config $pathto --auth-user-pass ~/.config/protonvpn/0-auth --auth-nocache&& echo "done!") || echo -e "something went wrong. \narg: $1 \nrealpath: $pathto"
+}
+
+
+
+ipinfo.io(){
+	curl ipinfo.io/$1/geo
+}
