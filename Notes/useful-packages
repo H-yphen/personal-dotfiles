@@ -9,6 +9,10 @@ shellcheck -- static shellscript linter
 figlet/toilet -- banners in terminal
 nethogs -- a small net top that associates traffic by process rather than port
 ocl-icd -- OpenCL video drivers for intel integrated graphics, helps a lot next to mesa. Your current hardware supports OpenCL not GL
+dos2unix -- a simple tool that converts the line ending characters in text files
+	Windows text files end in LF+CR aka \n\r
+	UNIX files only end with LF
+	hence this tool.
 
 [pip]
 exrex -- a great tool that generates wordlists from regex
