@@ -13,14 +13,26 @@ echo "/boot found and is empty."
 (mount $ESPdevice /boot && echo "mounted ESP.") || echo "mounting problem."
 
 confpath=$(find /boot -name loader.conf -exec realpath {} \;)
+defentry="$(sed "s/loader\.conf/entries/" <<<$confpath)/$(head -n 1 $confpath | sed "s/default //").conf"
 echo "conf: $confpath"
 cp $confpath $confpath~
+cp $defentry $defentry~
 #TODO: check if conf already has the relevant configs, do nothing in that case
 #DONE:
-if [[ $( tail -n 3 $confpath) == "timeout 4\neditor no\nauto-firmware yes" ]]; then
-       	echo "already configured."
+if grep -q timeout $confpath ; then
+       	echo "already configured the loader."
 else
+	echo "configuring the loader..."
 	echo -e "timeout 4\neditor no\nauto-firmware yes" >> $confpath
 fi
+if grep -q resume $defentry; then
+	echo "already configured the Linux command."
+else
+	echo "configuring the Linux command..."
+	reg="options .*$"
+	repl="options root=PARTUUID=1bd158a7-9820-4931-b0d7-9d750f01ea2a quiet loglevel=6 systemd.show_status=true rw radeon.si_support=0 radeon.cik_support=0 amdgpu.si_support=0 amdgpu.cik_support=0 resume=UUID=9c8a88c8-6e14-46f7-9ffd-34615e61e4a2 resume_offset=6553600"
+	sed -i "s|$reg|$repl|" $defentry
+fi
 
+echo "done, unmounting /boot"
 umount $ESPdevice

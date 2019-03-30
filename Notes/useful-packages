@@ -4,7 +4,8 @@ keepassxc -- a password database with password generation (diceware) abilities
 liquidprompt -- better bash prompt
 python3-pygments -- syntax highlighter that works like cat (pygmentize -g <file>)
 silversearcher-ag -- aka the silver searcher, much faster and friendlier than find
-command-not-found/shellcheck -- command suggestions
+command-not-found -- command suggestions
+shellcheck -- static shellscript linter
 figlet/toilet -- banners in terminal
 nethogs -- a small net top that associates traffic by process rather than port
 ocl-icd -- OpenCL video drivers for intel integrated graphics, helps a lot next to mesa. Your current hardware supports OpenCL not GL

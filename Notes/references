@@ -407,3 +407,11 @@ while read i; do something ; done < filename
 # when using find 
 remember it goes like this: find path > expression > action
 never order it in any other way.
+
+So, you like GTK themes but don't like how Firefox handles them on buttons and input fields?
+here's how to fix that:
+about:config
+create widget.content.gtk-theme-override and give it a string value of your favourite theme's light variant, or any light theme. Case sensitive
+e.g.
+Plata-Lumine-Compact
+
