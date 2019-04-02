@@ -34,8 +34,8 @@ fi
 # startx on login
 # xdg vtnr is the vertual terminal number -eq equals to 1
 
-# if [ -f "$PATH/.xinitrc" ] ; then
-# 	[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx $PATH/.xinitrc
+# if [ -f "$HOME/.xinitrc" ] ; then
+# 	[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx $HOME/.xinitrc
 # else
 # 	[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx
 # fi
