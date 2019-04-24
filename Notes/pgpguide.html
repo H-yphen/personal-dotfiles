@@ -1,0 +1,597 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 5px;
+  padding-bottom: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a:hover {
+    background-color: #faff6f;}
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0px 0 0px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black;
+  padding-bottom: 30px; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+ul, ol, dl, li {
+  margin: 0px 0; }
+
+p, blockquote, table, pre {
+  margin: 10px 0; }
+
+hr {
+  border-top: 1px solid #ccc;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%;
+  margin: auto; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>pgp</title>
+</head>
+<body>
+<h1>A PGP  beginners guide, for beginners who want to do it right</h1><br>
+<p>When I (<a href="https://twitter.com/curtiswallen">@curtiswallen</a>) was first learning how to use PGP encryption I followed a bunch of different guides online, but still felt so confused. They taught the bare minimum for generating a key, and then didn't give any real world advice on how to use it or how to actually encrypt anything. After learning a little more and gaining some experience, I also realized that those guides often don't focus on some of the most important aspects of encrypted communications. Namely, that encrypting email isn't enough on its own to provide security. In this guide I've tried to distill my best advice in a simple and concise format. Hopefully you will find it useful.</p>
+<p>
+<ol>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#getting-started">Getting started/configuration</a></li>
+<li><a href="#generating-keys">Generating your key</a></li>
+<li><a href="#generating-revoke">Generating your revocation certificate</a></li>
+<li><a href="#sending-messages">Sending messages</a></li>
+<li><a href="#receiving-messages">Receiving messages/sharing your key</a></li>
+<li><a href="#example-method">One potential secure procedure</a></li>
+<li><a href="#epilogue">Epilogue</a></li>
+</ol>
+<ul>
+<li><a href="#verifying-with-pgp">Verifying downloads using PGP</a></li>
+</ul>
+</p>
+<a name="intro"></a>
+<h3>What is PGP?</h3>
+<p>PGP ("Pretty Good Privacy") is a piece of software created by Phil Zimmermann in 1991 to encrypt digital information. In 1997, realizing an open standard for PGP encryption was needed to prevent the technology from being locked down by patents, Zimmermann and his team drafted the OpenPGP standard. In 1999, the Free Software Foundation released version 1 of the GNU Privacy Guard (GPG), an OpenPGP standards compliant encryption program. Most uses of PGP today are via GnuPGP (GPG).</p>
+<h3>What is PGP good for?</h3>
+<p>PGP is really good at encrypting data. If used correctly, there should be no way for anyone unintended to determine the content of information encrypted using PGP.</p>
+<p>However, law enforcement can force a user to surrender her or his passwords/keys, or can use an array of different methods to discover the content they're looking for. Because the encryption itself is so strong, an adversary will rarely focus on breaking it. They will instead look to exploit weaker links in the chain: passwords, keys, plaintext drafts/copies on a target's computer, or the sender/recipient herself.</p>
+<p>Or, in some cases, the content isn't even needed. Metadata analysis can often be enough to blow a journalist/whistleblower/etc.'s cover.</p>
+<h3>What does that mean?</h3>
+<p>PGP is an important and powerful tool, but it can't prevent you from fucking up in the thousand other ways your adversary is hoping you will. Communications security requires more than encryption. You need to be alert; you need to be smart.</p>
+<h3>With that in mind, let's get started</h3>
+<p>A quick note: many people use Mozilla's Thunderbird email client with the Enigmail plug-in to manage pgp encrypted email. I have experienced a few quirks in the past with this set-up that have led me to use a different procedure. It is a bit less convenient, but I believe it is ultimately safer. Of course, feel free to explore other options and do whatever you'd like. :-)</p>
+<p>First install the necessary tools and configure everything properly.</p>
+<a name="getting-started"></a>
+<h4>GnuPG</h4>
+<p><strong>OS X:</strong> <a href="https://gpgtools.org/">https://gpgtools.org/</a><br>
+<strong>Windows:</strong> <a href="http://gpg4win.org/">http://gpg4win.org/</a><br>
+<strong>GNU/Linux (Debian, Ubuntu, Mint, Fedora, etc):</strong> GNUPG comes with most Linux distros, but if you don't have it - <a href="https://www.gnupg.org/download/index.html">https://www.gnupg.org/download/index.html</a></p>
+<h4>gpg.conf</h4>
+<p>I'll briefly explain what the suggested configuration changes are below. If you'd like to learn more, please read Riseup's excellent PGP best practices guide <a href="https://help.riseup.net/en/security/message-security/openpgp/best-practices">https://help.riseup.net/en/security/message-security/openpgp/best-practices</a>.</p>
+<p>Changes that will be made in the GPG configuration:</p>
+<ul>
+<li>Forcing the use of an encrypted keyserver<ul>
+<li>This prevents social network analysis based on which keys you receive. A saavy attacker could snoop on unencrypted traffic and build a picture of who you're communicating with based on the keys you add to your keyring.</li>
+</ul>
+</li>
+<li>Securely refreshing keys on a time delay via Tor<ul>
+<li>This makes it harder for an attacker to correlate key updates on your keyring</li>
+</ul>
+</li>
+<li>Forcing the use of full fingerprints when dealing with keys<ul>
+<li>Short and long OpenPGP Key IDs can be spoofed and/or collide. Never use Key IDs, always use full length fingerprints.</li>
+</ul>
+</li>
+<li>Guarantee use of the strongest cryptographic algorithms</li>
+</ul>
+<p>The recommended settings have been incorporated into a config file at Jacob Appelbaum’s duraconf “collection of hardened configuration files," which you can download here (right-click, "save as"):
+<a href="https://raw.githubusercontent.com/ioerror/duraconf/master/configs/gnupg/gpg.conf">https://raw.githubusercontent.com/ioerror/duraconf/master/configs/gnupg/gpg.conf</a></p>
+<p>Also download this file: <a href="https://sks-keyservers.net/sks-keyservers.netCA.pem">https://sks-keyservers.net/sks-keyservers.netCA.pem</a>
+It is a digital certificate that will allow you to use the recommended sks hkps encrypted keyserver pool. Save it somewhere that makes sense to you. I have mine (on GNU/Linux) saved at "/usr/local/etc/ssl/certs", but you can put it anywhere. Remember where you saved it, and make sure it's somewhere where it won't easily/accidentally be deleted.</p>
+<p>Edit the config file so the hkps cert location (found on line 52, after "keyserver-options ca-cert-file=") is pointing to the location where you saved your certificate file. I also noticed that Applebaum's config has a different filename for the certificate. Make sure you change it to "sks-keyservers.netCA.pem".</p>
+<p>Replace your old gpg.conf file with the new one. </p>
+<p>On GNU/Linux and MacOS it should be here: <strong>~/.gnupg/gpg.conf</strong><br>
+On Windows should be here: <strong>AppData\GnuPG\</strong> </p>
+<p>The easiest way to move the config file in GNU/Linux or MacOS (assuming you downloaded it to your Downloads folder) is in the Terminal using the command:  "sudo mv -f Downloads/gpg.conf ~/.gnupgp/"</p>
+<a name="tor"></a>
+<h4>Tor</h4>
+<p>If you don't have Tor already, you should also download that. If you're interested in PGP encryption, you will also likely be interested in Tor, and we'll need it for securely refreshing keys.</p>
+<p><a href="https://www.torproject.org/">https://www.torproject.org/</a></p>
+<p>And now that you have GPG installed, you should verify your Tor download. This will ensure you actually downloaded the proper Tor Browser Bundle and not a cleverly spoofed piece of malware/something else. Instructions for verification can be found at the <a href="#verifying-with-pgp">bottom of this guide</a>.</p>
+<h4>Torsocks</h4>
+<p>Torsocks is necessary to run Parcimonie (below).</p>
+<p><a href="https://code.google.com/p/torsocks/">https://code.google.com/p/torsocks/</a></p>
+<p>You should verify your Torsocks download before installing.</p>
+<h4>Parcimonie</h4>
+<p>Parcimonie is a tool to refresh the keys on your keyring one at a time at random intervals to make timing correlation harder for an attacker. The version of Parcimonie referenced here was rewritten as a single bash script by Etienne Perot.</p>
+<p>You can download it here (right-click, "save as"): 
+<a href="https://raw.githubusercontent.com/EtiennePerot/parcimonie.sh/master/parcimonie.sh">https://raw.githubusercontent.com/EtiennePerot/parcimonie.sh/master/parcimonie.sh</a></p>
+<p>Save it anywhere it won't be easily deleted. Maybe, "Documents/PGP/Parcimonie/"<br>
+Make sure Tor is running and Torsocks is configured, and then run the script from the terminal:</p>
+<blockquote>
+<p>bash Documents/PGP/Parcimonie/parcimonie.sh</p>
+</blockquote>
+<p>Let it run in the background and it will securely refresh your keys. Of course, you probably don't have any yet, so you can wait and do this later.</p>
+<p></p>
+<hr>
+<a name="generating-keys"></a>
+<h3>Generating your PGP key</h3>
+<p>Open the terminal, and type in:</p>
+<blockquote>
+<p>gpg --gen-key</p>
+</blockquote>
+<p>After you press the enter key, it will say:  </p>
+<blockquote>
+<p>Please select what kind of key you want:<br>
+   (1) RSA and RSA (default)<br>
+   (2) DSA and Elgamal<br>
+   (3) DSA (sign only)<br>
+   (4) RSA (sign only)<br>
+Your selection?  </p>
+</blockquote>
+<p>Type <strong>1</strong> (or whichever number corresponds to "RSA and RSA", if yours is different) and press the enter key.</p>
+<p>It will then say:  </p>
+<blockquote>
+<p>RSA keys may be between 1024 and 4096 bits long.<br>
+What keysize do you want? (2048)</p>
+</blockquote>
+<p>Type <strong>4096</strong> (we want to use the longest keysize possible) and press the enter key.</p>
+<p>It will then say:  </p>
+<blockquote>
+<p>Please specify how long the key should be valid.<br>
+         0 = key does not expire<br>
+      <n>  = key expires in n days<br>
+      <n>w = key expires in n weeks<br>
+      <n>m = key expires in n months<br>
+      <n>y = key expires in n years<br>
+Key is valid for? (0)  </p>
+</blockquote>
+<p>Type <strong>2y</strong> and press the enter key. Then set a calendar reminder for a little less than two years from now so you remember when your key is set to expire. That way you can renew or revoke it, depending on the circumstances. Confirm you want it to expire in two years by typing "y" and pressing the enter key.</p>
+<p style="padding: 10px 15px; background-color: #eee"> It is a good idea to set an expiration date, because it acts kind of like a "dead man's switch." If for some reason you forget your password, or your key is compromised, and you don't have your revoke cert, the certificate will automatically be revoked after the expiration date. This lets other users know to stop using it. And if your key expires accidentally, you can still renew it. So it's a win/win.</p>
+<p>It will then tell you that you need a user ID consisting of your real name, email address, and a comment. You can use whatever name you want, whatever email address you want (or no email address), and you should not input a comment.</p>
+<p>Depending on your use, it may be a good idea to use your real name, or it may not.</p>
+<p>When working on this guide, I generated a new key and entered the ID parameters as follows:</p>
+<blockquote>
+<p>Real name: Mr. Cool Guy<br>
+Email address: funtimeemail@coolemail.xxx<br>
+Comment: <br>
+You selected this USER-ID:<br>
+    "Mr. Cool Guy <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#117;&#110;&#116;&#105;&#109;&#101;&#101;&#109;&#97;&#105;&#108;&#64;&#99;&#111;&#111;&#108;&#101;&#109;&#97;&#105;&#108;&#46;&#120;&#120;&#120;">&#102;&#117;&#110;&#116;&#105;&#109;&#101;&#101;&#109;&#97;&#105;&#108;&#64;&#99;&#111;&#111;&#108;&#101;&#109;&#97;&#105;&#108;&#46;&#120;&#120;&#120;</a>"  </p>
+</blockquote>
+<p>I can use that key with any email address I want to. Keys are not bound to the email addresses listed in their user IDs. This is important. The user IDs are simply used for identification.</p>
+<p>So like I said before, choosing an ID depends on who you are. If you're a journalist, or require public facing communications, it might be a good idea to use your real name/email address to make it easier for people to find/contact you. If you're communicating with a small network of clandestine operators, you probably shouldn't use any information with any actual connection to you or your group.</p>
+<p>After you enter your ID information, it will ask you to confirm. Type "o" and then press the enter key.</p>
+<p>It will now ask for your password. I recommend using a long passphrase with multiple words. Something like: "nV3r go!ng 2g1ve y0u uP", mixing caps, numbers, and symbols. </p>
+<p>Bruce Schneier has a nice blog post on choosing secure passphrases: <a href="https://www.schneier.com/blog/archives/2014/03/choosing_secure_1.html">https://www.schneier.com/blog/archives/2014/03/choosing_secure_1.html</a>  </p>
+<p>I recommend reading that and coming up with a password that is easy for you to remember but extremely hard for an adversary to guess. This goes without saying, but... <em>DO NOT FORGET YOUR PASSWORD</em>.</p>
+<p>It will ask you to enter your password twice to ensure you remember it/didn't type it wrong, and then your key will generate. :-)</p>
+<hr>
+<a name="generating-revoke"></a>
+<h3>Generating a revocation certificate</h3>
+<p>After your key is generated, you should generate a revocation certificate by typing:</p>
+<blockquote>
+<p>gpg --gen-revoke --armor --output=RevocationCertificate.asc funtimeemail@coolemail.xxx</p>
+</blockquote>
+<p>Replace the email address with whatever you used for your key.</p>
+<p><em>DO NOT OPEN THE CERT BY DOUBLE CLICKING</em> or you may revoke the key you just generated. Not the end of the world, but annoying. Right click the file, open it in a text editor, and print it out. Once you have it printed out, put it somewhere safe. Send it to your mom. Don't lose it. Don't let anyone nefarious get a hold of it. </p>
+<p>If someone gets ahold of your revocation certificate they can't use it to decrypt/encrypt anything. The worst they can do is revoke your key, which is simply annoying. But you may need it later if the key/password is compromised and you need to let others know the key is no longer safe to use. So keep it safe.</p>
+<p>Once the revocation certificate is printed and secure, delete the file from your computer.</p>
+<p></p>
+<hr>
+<a name="sending-messages"></a>
+<h3>Sending messages</h3>
+<p>First you'll need someone to contact, and you'll need to import their key to your keyring. The easiest way to get started is for you to email me. Type this into the terminal:</p>
+<blockquote>
+<p>gpg --recv-keys '7E75 9D36 322A D50C 0932 F78A C260 DFF1 79BB D858'</p>
+</blockquote>
+<p>When you press enter it should give you confirmation that the key has been added and reveal the email address to use.</p>
+<p style="padding: 10px 15px; background-color: #eee"><strong>An important note on using public keys:</strong> it is important to verify the key you are adding/using actually belongs to the person you wish to communicate with. To quote from Alan Eliasen's <em>phenomenal</em> (and in-depth) <a href="https://futureboy.us/pgp.html">PGP guide</a>: "Anyone can generate a public key for any e-mail address. Anyone can post that key to any key server. Only by verifying that the key really belongs to the person you think it does does it give you any security. Without this crucial verification, all that your cryptographic software does is ensures that bits weren't corrupted during transmission, and prevents casual observers from reading the message. It does not mean that you're talking to who you think you are. You could be talking to someone else entirely (a bad guy,) or you could be subject to a man-in-the-middle attack."</p>
+<p>Now that you have my key, to compose a message type into the terminal:</p>
+<blockquote>
+<p>gpg -R curtis -ea </p>
+</blockquote>
+<p style="padding: 10px 15px; background-color: #eee">"-R" (capital r) tells GPG to encrypt the message with the recipient "hidden." That means the metadata in the encrypted content will not indicate who the intended recipient is. This is a countermeasure against traffic analysis. (If you use a lowercase "r" instead, recipient metadata will be included.) "-e" is the command to encrypt, and "-a" is the command to produce ASCII output, so you can copy and paste it into an email.</p>
+<p>After you hit enter, the input cursor will move down to the next line. Begin typing your message:</p>
+<blockquote>
+<p>I got it working! One step closer to protecting my content online. :-)</p>
+</blockquote>
+<p>When you've finished your message, press enter so you're on a new blank line, then press [CTRL+D] and you should see the encrypted text block ready to be copied and pasted into the body of an email.</p>
+
+<p>A few things to keep in mind:</p>
+<ul>
+<li>When composing messages it is important to avoid patterns. This basically means <em>don't repeat yourself</em>. Repetitive content is vulnerable to <a href="https://en.wikipedia.org/wiki/Known-plaintext_attack">known-plaintext attack</a>.
+    <ul>
+    <li>Don't always start messages with "Hello"</li> 
+    <li>Don't always sign off with your name</li>
+    <li>Don't include predictable phrases</li>
+    <li>Don't send HTML messages (HTML repeats a lot)</li>
+    <li>Don't quote the original text when replying to an encrypted message</li>
+    <li>Etc. (Be smart)</li>
+    </ul>
+</li>
+<li>You can use your private key to sign any messages you send by adding "s" to the "-ea" command (-eas). However, signing a message connects it to you forever. A signature is cryptographic proof that you (or at least someone with the signing private key) encrypted the content.<ul>
+<li>Sometimes signing is a good idea, because a recipient needs to be sure the info they're getting is from you and hasn't been tampered with. (If you sign a message and the content is modified at any point between you and the intended recipient the signature will fail, so the recipient will know the content has been altered.)</li>
+<li>Other times signing is bad idea, becuase you may not want to be connected to the content.</li>
+</ul>
+</li>
+<li>Email contains <em>a lot</em> of metadata. Most of it you cannot control. The subject is one thing you can control. If you're sending a top secret email and give it the subject "NSA Whistleblowing Docs!", that is extremely useful metadata for an adversary. In my opinion, the best option is to leave the subject blank. Any subject, even something like "***", can later be used for analysis to link emails using the same subject. You want to avoid establishing observable patterns.</li>
+<li>Delete <em>EVERYTHING</em> (delete securely using <em>shred -u</em> on MacOS/Linux, or <a href="http://technet.microsoft.com/en-us/sysinternals/bb897443.aspx">sdelete</a> on Windows.)
+</li>
+</ul>
+<hr>
+<a name="receiving-messages"></a>
+<h3>Receiving messages/sharing your key</h3>
+<p>For other people to contact you, they'll need your public key. There are a handful of options for providing this. Again, your decision will likely be based on your security needs. </p>
+<h4>Publish key to keyserver (most public)</h4>
+<p>First, type into the terminal:</p>
+<blockquote>
+<p>gpg --fingerprint</p>
+</blockquote>
+<p>Press the enter key, and you should see all the keys in your keyring with their fingerprints. Locate your key with "sub" in the leftmost column:</p>
+<blockquote>
+<p>uid                 [ultimate] Curtis <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#117;&#114;&#116;&#105;&#115;&#119;&#97;&#108;&#108;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#99;&#117;&#114;&#116;&#105;&#115;&#119;&#97;&#108;&#108;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+sub   4096R/0x142A8E8BFD311848 2014-07-30 [expires: 2016-07-29]<br>
+      Key fingerprint = C83D FB24 4279 4E79 8472  9FCE 142A 8E8B FD31 1848</p>
+</blockquote>
+<p>Copy your sub fingerprint, and use it to send your key to the server by typing:</p>
+<blockquote>
+<p>gpg --send-keys 'C83D FB24 4279 4E79 8472 9FCE 142A 8E8B FD31 1848'</p>
+</blockquote>
+<p>You should get a message saying something like:</p>
+<blockquote>
+<p>gpg: sending key 0x4F071F6587C89BC3 to hkps server hkps.pool.sks-keyservers.net</p>
+</blockquote>
+<p>There you go! Now, you can give out your fingerprint, and others can use it to add your key to their keyring and send you encrypted messages.</p>
+<h4>Send via encrypted email</h4>
+<p>If the person you want to contact has a public facing key, you can encrypt your public key and send it to them.</p>
+<p>Type into the terminal:</p>
+<blockquote>
+<p>gpg --export -a '<em>fingerprint</em>' // (replace <em>fingerprint</em> with your fingerprint)</p>
+</blockquote>
+<p>After pressing the enter key, you will see a chunk of output starting with "-----BEGIN PGP PUBLIC KEY BLOCK-----". This is your full public PGP key. Copy and paste the entire thing, including the "BEGIN" and "END" lines in an email to whoever you want to send it to.</p>
+<p>They can then enter the command "gpg --import" into their terminal, paste in your keyblock, press the enter key, and then [CTRL-D], to import it to their keyring.</p>
+<h4>Trade in person (most private)</h4>
+<p>You could also give them your key on an encrypted flash drive in person. Or print it out and have them write it down manually. Or any other number of face to face transfers.</p>
+<h3>Once you receive a message</h3>
+<p>Open the terminal, type "gpg", press enter, and then paste in the encrypted block. Upon successful entry of your password, the decrypted message will display in the terminal.</p>
+<hr>
+<a name="example-method"></a>
+<h3>One potential secure email procedure</h3>
+<p>Let's say you want to be very safe about your communications. One potential procedure could go something like this:</p>
+<ul>
+<li>Acquire a clean computer as anonymously as possible. Use cash. Buying used from an individual is best, but if you buy from a store don't use reward points, don't buy a warranty, don't register it. The goal is to keep it from being connected to you by any paper/digital trail. Reformat the harddrive, install Linux, use full disk encryption, and never connect it to the internet. You may even want to remove the wireless card completely. (Never connecting a computer to the internet is called an "air gap.")</li>
+<li>Generate your PGP keys on the clean laptop. Export your public key and store it on a USB flash drive.</li>
+<li>Using a different computer, connect to a public wi-fi network and launch Tor.</li>
+<li>Import the key(s) for the person(s) you want to contact and write your message(s). Include your public key, an operational email address where they can reach you, and instructions to: 1) contact you using a fresh email address, from a public wi-fi network 2) include a fresh PGP key, that they keep offline, that you can use when you next contact them.</li>
+<li>Use an ephemeral email service (like <a href="https://www.guerrillamail.com">https://www.guerrillamail.com/</a>) from behind Tor to send your initial emails.</li>
+<li>Only check your operational email from public wi-fi networks behind Tor. Once you receive a reply, copy and paste the PGP text block into a text document and save it to a USB flash drive. Transfer it to your offline computer with the neccessary private key to decrypt.</li>
+<li>It is important to only add their new PGP key to the keyring on your offline computer. Draft and encrypt all replies on your offline computer, and then transfer them via USB flash drive to your networked computer to send from a public network.</li>
+</ul>
+<p>Using this procedure, you have established a channel of communication that has no link to you or your initial contact person. You are now in a vacuum of two email adresses that have only ever contacted each other, using offline PGP keys that cannot be identified.</p>
+<p>If you only ever connect from public networks behind Tor, keep your keys secure, and practice smart email hygeine (no subject, delete, delete, delete), you will have a fairly secure communications channel.</p>
+<p>You could harden the system a little more by only using <a href="http://https://tails.boum.org/">Tails OS</a> booted from a USB drive, with a persistent volume for storing keys. If you do this, use a different boot drive for each computer, one for online and one for offline.</p>
+<p>Another option for hardening the system would be to use CD-Rs instead of USB flash drives. A USB flash drive could be targeted with malware to exfiltrate data from the offline computer and then send it back to an attacker when the flash drive is plugged into an internet connected machine. CD-Rs are read only and prevent that problem. Each CD-R should be used one time and then destroyed.</p>
+<p>If using the CD-R method, data transfer must become one way; nothing can ever be burned from the offline computer. This means you will have to use your online computer to encrypt outbound messages, rather than encrypting them on the offline computer and transferring them via USB. This trade-off warrants careful consideration. Having that key stored on your online computer creates a detectable link for an attacker. However, if the person you are communicating with is also using an offline computer and CD-Rs to decrypt the messages, and you're both careful not to link the keys to your real identities, this method provides a higher level of data security.</p>
+<p>Obviously, downloading emails from public networks and then transferring messages back and forth from the offline computer is slow and annoying. Add in Tails and/or CD-Rs and it slows down even more. Most people probably don't need those levels of security, but that is the tradeoff you will constantly encounter trying to play this game: security vs. convenience.</p>
+<hr>
+<a name="epilogue"></a>
+<h3>Epilogue</h3>
+<p>This guide (except the previous section) is meant to provide a secure procedure for using PGP encryption within a "standard" environment; meaning an every day personal computer with the private key stored on the local drive. This is sufficient for most use cases, however some users will need/want a more secure set-up.</p>
+<p>How secure do you need to be?  </p>
+<ul>
+<li>Private key stored on USB drive?</li>
+<li>Private key stored on encrypted USB drive?</li>
+<li>OpenPGP Card? </li>
+<li>Tails?</li>
+<li>Air gap?</li>
+</ul>
+<p>Only you can decide. :-)</p>
+<hr>
+<a name="verifying-with-pgp"></a>
+<p><span style="font-size: 18px; font-weight: bold">Verifying downloads using PGP</span> <a href="#tor">(Return to Tor section)</a></p>
+<p>Underneath the link where you downloaded Tor you should see a small link that says: (sig). Right click, and save that file to the same directory you downloaded the Tor Browser Bundle .dmg/.tar.xz/.exe</p>
+<p>First thing you need to do is import the key that signed the package. Erinn Clark signs all the Tor Browser Bundles. You can import her key (in GNU/Linux and/or MacOS) by opening the terminal and typing:</p>
+<blockquote>
+<p>gpg --recv-keys '8738A680B84B3031A630F2DB416F061063FEE659'</p>
+</blockquote>
+<p>Once you have Erinn's key, you can verify your download by using the "--verify" gpg command:</p>
+<blockquote>
+<p>gpg --verify /Downloads/TorBrowser-3.6.3-osx-i386-en-US.dmg{.asc,}</p>
+</blockquote>
+<p>The output should read: </p>
+<blockquote>
+<p>gpg: Signature made <em>[SIGNING DATE]</em> using RSA key ID 63FEE659<br>
+gpg: Good signature from "Erinn Clark <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#114;&#105;&#110;&#110;&#64;&#116;&#111;&#114;&#112;&#114;&#111;&#106;&#101;&#99;&#116;&#46;&#111;&#114;&#103;">&#101;&#114;&#105;&#110;&#110;&#64;&#116;&#111;&#114;&#112;&#114;&#111;&#106;&#101;&#99;&#116;&#46;&#111;&#114;&#103;</a>"<br>
+gpg:                 aka "Erinn Clark <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#114;&#105;&#110;&#110;&#64;&#100;&#101;&#98;&#105;&#97;&#110;&#46;&#111;&#114;&#103;">&#101;&#114;&#105;&#110;&#110;&#64;&#100;&#101;&#98;&#105;&#97;&#110;&#46;&#111;&#114;&#103;</a>"<br>
+gpg:                 aka "Erinn Clark <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#114;&#105;&#110;&#110;&#64;&#100;&#111;&#117;&#98;&#108;&#101;&#45;&#104;&#101;&#108;&#105;&#120;&#46;&#111;&#114;&#103;">&#101;&#114;&#105;&#110;&#110;&#64;&#100;&#111;&#117;&#98;&#108;&#101;&#45;&#104;&#101;&#108;&#105;&#120;&#46;&#111;&#114;&#103;</a>"<br>
+gpg: WARNING: This key is not certified with a trusted signature!<br>
+gpg:          There is no indication that the signature belongs to the owner.<br>
+Primary key fingerprint: 8738 A680 B84B 3031 A630  F2DB 416F 0610 63FE E659   </p>
+</blockquote>
+<p>The warning at the bottom is about trusting the the validity of the signature itself, not the verification of the download. It's basically saying, "The signature matches, but I'm not sure if we trust the signature." For now, you'll just have to trust it. Maybe someday you'll meet Erinn in person and you can verify the signature actually belongs to her.</p>
+<p>Now that you know the Tor download is legit. Feel free to install Tor.</p>
+<p style="padding: 10px 15px; background-color: #eee"> I am not familiar with the process on Windows, but Tor has their own guide here: <a href="https://www.torproject.org/docs/verifying-signatures.html.en">https://www.torproject.org/docs/verifying-signatures.html.en</a> It includes instructions for Windows, MacOS, and GNU/Linux.</p>
+<hr>
+<p><em>A warm thank you to <a href="https://twitter.com/thegrugq">@thegrugq</a> and <a href="https://twitter.com/justintroutman">@justintroutman</a> for thoughts and insights while compiling this guide.</em></p>
+</body>
+</html>

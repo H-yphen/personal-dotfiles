@@ -1,0 +1,44 @@
+gpg --full-gen-key generate your key
+gpg -k list pub keys -K secret keys
+gpg --edit-keys edit your keys (interactive)
+gpg --send-keys [--keyserver] send your keys to keyserver
+gpg --gen-revoke generate a revocation cert
+gpg --export + --export-secret-keys + --export-ownertrust = backup
+gpg --import keyfile
+gpg --recv-keys keyid on keyserver
+
+when you sign a key, send it back to its user (by uploading it for example)
+
+when you sign an email, use clearsign. 
+Only sign email that you want to be attributed to you in person.
+Be mindful of when it's better NOT to sign youremail or use a new key
+specific for that case then revoke it when you're done.
+"A signature is cryptographic proof that you encrypted the content."
+
+when encrypting, add yourself to the recepients list with another -R
+-R stands for hidden recipient. This should just be the default for you.
+
+encrypt without using vim's commands:
+gpg -R <recipient> -ea <Enter>
+write a message
+then enter a trailing newline
+then hit <Ctril-D>
+
+when sending a PGP message, don't use recognizeable patterns.
+      i.e. don't start it with Hello or Hi
+           don't put something relevant on the subject
+           don't be polite and say things like 'Regards'
+
+It's better to set expiry on your master key, as a 'dead man switch'
+if the key expires in two years or something you can renew it even after 
+expiry
+
+revokation certs are only generated if you have the secret key. generate
+a cert the moment you create a key.
+the cert should be the thing you utmostly protect, followed in priority
+by the secret key, as it has a password protection layer.
+
+under heavy adversaries, you may even result to using extreme techniques
+like air-gapping. But you most likely will never need to. Unless you're
+doing highly sensitive activist work or something lol.
+
