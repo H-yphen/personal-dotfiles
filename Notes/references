@@ -415,3 +415,15 @@ create widget.content.gtk-theme-override and give it a string value of your favo
 e.g.
 Plata-Lumine-Compact
 
+
+
+# some cursor themes are "zero-byte" according to @Gewgaw. That means they 
+# depend on a base cursor theme to function properly.
+#
+# You may move them to the same directory of the base theme or do the 
+# opposite.
+
+mv ~/.local/share/icons/Breeze-blue /usr/share/icons/ (where Breeze-cursor 
+exists)
+
+
