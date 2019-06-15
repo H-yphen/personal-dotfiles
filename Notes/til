@@ -1,0 +1,114 @@
+##################################################################
+#
+# Notes:
+#
+##################################################################
+
+# Commands you should use more:
+
+w: shows all the logged in users, command is literally just `w`
+last: shows a log of logins
+whois: retrieves info abot any ip address
+lsof: ls open files (-p PID of a process) (-i to show LISTENing and ESTABLISHED processes that only listen and don't consume resources)
+strace: trace system calls (-p PID of a process)
+iftop: network usage by process
+netstat: TCP & UDP connection info
+nethogs: easier on the eyes
+ps (auxf): show all processes -- not just top/htop
+uptime: uptime and load averages. Load is in this order: 1min avg., 5m, 15m
+trap -l: list all possible process signals and their corresponding numbers
+getent: get admin database entries
+
+file: identifies file type
+stat: view detailed info of the file
+
+screen: a tty virtual terminal with powerful capabilities like tiling.
+        all keybinds are prepended with ctrl+a. use ^a ? to see all keybinds.
+        screen -r reconnects to an existing screen, -S names a new one.
+pushd: stack a directory in a temp bookmark stack to return to later
+popd: pops the first instance of the stack
+	Note: push/popd behaviour is similar to android's recent apps button
+
+sort + uniq / sort -u : sort output by ASCII standard and uniq removes
+duplicates from the piped data. Uniq only works with adjacent dupes thats why 
+sort is needed first.
+
+sed: replaces stuff or regexes with defined characters like this: 
+sed [-r] "s[delimiter(default:/)]/replaced/replacer[/g]" where s is the 
+replacing operator I think. and /g means replace all not the first occurence 
+only.
+NOTE ON SED: you can reference your matched string on the substitution part
+with a '&'. e.g. sed 's/hello world/&\. I hate you\./' outputs hello world. I
+hate you.
+
+piping to tr: tr also replaces shit. But it replaces character by character
+(or deletes). Can be used for caesar cypher like mentioned below (in rot13)
+
+cut: cut -d delimiter -f fields (like python's separate)
+
+rev: !esrever ni gnihtyreve
+wc: counts lines and words and characters
+
+strings: finds strings in binary files, which can be then grepped or whatever
+base64: encode/decode base64 strings
+
+######################
+
+# I didn't know that:
+
+? is a wildcard that is often underused
+[0-9] works like it would on regex (range with 9 included), [a-z] works too 
+as well as [0-9a-z]
+
+ncurses is the interface that's middleground between gui and cli 
+(kinda like void installer)
+
+<       this pipe is a read from file input
+<<MARK  this pipe is a read from marked multiline input
+<<<     this pipe is a read from string input
+https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
+this explains the behaviour of the << pipe. (usually used with cat since 
+it replicates its input).
+
+!! means previous command but there's more:
+!<term> searches for the most recent command that starswith <term>
+!?<term> same but not necessarily startswith
+!n nth command from top
+!-n nth command from bottom
+!* means all args from previous command. e.g. ls Desktop <Enter> cd !*
+!^ first arg. e.g. 'something' in `wget something -O something2`
+!$ last arg.
+!:n nth arg (!:0 is the command itself)
+!:n-m nth to mth args
+!expansion:modifiers (Those modifiers trail the expansion)
+        :s/string1/string2/ substitute
+        :p print without exec
+
+---------
+RESEARCH:
+sed can actually substitute for a single line or a line range: sed <line
+number or line range> {s/regex/repl/flags}; or sed {/regex/s/regex/repl/flags}
+---------
+
+/usr/local is the agreed on location for software that is installed from
+source, and /usr/src for source code
+
+the dash in `su - username` is an indicator that we want to use the env of the 
+substitute user not only log as them
+
+when something with dashes interferes with your commands you can use a double 
+dash '--' to mark the end of your options and make any dash afterwards 
+meaningless.
+
+You can cd with a wildcard. ~$ cd Down* will cd to Downloads as long as the 
+glob pattern ONLY matches one outcome.
+
+you can read a ttyNUM contents by `cat /dev/vcsNUM`
+this seems to provide static contents of the buffer not continuous output
+
+Running make -n permits previewing the build process, as it prints out all the 
+commands that would be triggered by a make, without actually executing them. 
+
+a more realistic and less swapping-prone number of jobs for make is the number
+of gigabytes in memory you have -1, rather than the number of threads in your
+cpu.

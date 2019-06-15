@@ -1,0 +1,43 @@
+# This file is intended as a small map for myself to follow when installing 
+# minimal systems.
+
+
+# Base
+
+- init
+- shell
+- editor
+- 
+
+
+# Display
+
+- drivers
+- server
+- wm
+- fonts
+- gui library
+- 
+
+
+# Sound
+
+- drivers
+- server
+- mixer
+-
+
+# Networking
+
+
+
+# Device Management
+
+- usb
+- bluetooth
+
+
+# Power Management
+
+- hibernation
+

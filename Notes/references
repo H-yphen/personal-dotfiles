@@ -364,7 +364,7 @@ sudo groupadd editorial
 
 Now we want to add our new user, olivia, to the group editorial. For this we will take advantage of the usermod command. This command is quite simple to use.
 
-sudo usermod -a -G editorial olivia
+sudo usermod -aG editorial olivia
 
 
 # Bluetooth setup:
