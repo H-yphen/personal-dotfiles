@@ -3,45 +3,102 @@
 # that take params in reference positions
 
 
-
-del(){
-	IFS=$'\n' #handle spaces in filenames
-	# for arg in all args, 
-	# find the abspath of each arg, 
-	# echo the deletion info, 
-	# then "delete" the file by simply mv-ing it into trash
-	for i in $@; do
-		if [[ $i =~ (-h|--help) ]]; then 
-			echo -e "You are using del mode. \nYour files will be moved to wastebasket where they are retrievable. \nIf you want to rm, use /bin/rm. This is generally advised against."
-		elif [[ $i =~ ^-{1,2}[a-zA-Z0-9\'\"=._]+$ ]]; then
-			echo "Error: $i is an option. Del takes no options"
-		
-		elif [ -a $i ]; then
-			[[ -d $i ]]&& echo "Warning: $i is a directory. Removing recursively."
-			abspath=$(realpath -Ls $i)
-			basen=$(basename $abspath)
-			echo -e "[Trash Info]\nPath=$abspath\nDeletionDate=$(date '+%FT%T')" > $HOME/.local/share/Trash/info/$basen.trashinfo
-			/bin/mv $abspath -t $HOME/.local/share/Trash/files/
-		else
-			echo "Error: path $i does not exist."
-		fi
-	done
-
-	unset basen
-	unset abspath
-	unset i
-	unset IFS
-}
+##del has been replaced by 'gio trash' which does the same thing but better.
+#del(){
+#	IFS=$'\n' #handle spaces in filenames
+#	# for arg in all args, 
+#	# find the abspath of each arg, 
+#	# echo the deletion info, 
+#	# then "delete" the file by simply mv-ing it into trash
+#	for i in $@; do
+#		#if [[ $i =~ (-h|--help) ]]; then 
+#		#	echo -e "You are using del mode. \nYour files will be moved to wastebasket where they are retrievable. \nIf you want to rm, use /bin/rm. This is generally advised against."
+#		if [[ $i =~ ^-{1,2}[a-zA-Z0-9\'\"=._]+$ ]]; then
+#			echo "Error: $i is an option. Del takes no options"
+#		
+#		elif [ -a $i ]; then
+#			[[ -d $i ]]&& echo "Warning: $i is a directory. Removing recursively."
+#			abspath=$(realpath -Ls $i)
+#			basen=$(basename $abspath)
+#			echo -e "[Trash Info]\nPath=$abspath\nDeletionDate=$(date '+%FT%T')" > $HOME/.local/share/Trash/info/$basen.trashinfo
+#			/bin/mv $abspath -t $HOME/.local/share/Trash/files/
+#		else
+#			echo "Error: path $i does not exist."
+#		fi
+#	done
+#
+#	unset basen
+#	unset abspath
+#	unset i
+#	unset IFS
+#}
 
 
 
 vpn(){
 	pathto=$(realpath $1)
 	(sudo openvpn --daemon --config $pathto --auth-user-pass ~/.config/protonvpn/0-auth --auth-nocache&& echo "done!") || echo -e "something went wrong. \narg: $1 \nrealpath: $pathto"
+
+        echo "your IP is: $(dig +short myip.opendns.com @resolver1.opendns.com)"
 }
 
 
 
 ipinfo.io(){
-	curl ipinfo.io/$1/geo
+	curl ipinfo.io/$1/geo && echo
+}
+
+
+smartresize() {
+
+	# Smart resize: smartresize input[file] width output[dir]
+   mogrify -path $3 -filter Triangle -define filter:support=2 -thumbnail $2 -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB $1
+}
+
+ttgroup2urlist() { 
+        grep -P -o 'url.+?,' $1  | cut -d : -f 2,3 | tr -d '",' 
+}
+
+bday() {
+        bd="$(date -d 'Aug 3' +%s)"
+        now="$(date +%s)"
+        echo -n "new depressive episode in: "
+        echo "($bd-$now)/60/60/24" | bc | tr -d "\n"
+        echo " days"
+}
+
+gitfast()
+{
+cont=0
+case $1 in
+        
+        ''|'-h'|'--help')
+        echo 'gitfast [domain e.g. github.com] [repo e.g. cool/stuff] [options]'
+        ;;
+
+        '*.*')
+        cont=1
+        ;;
+        
+        *)
+        echo 'invalid URL, use pattern *.*'
+esac
+
+if [ $cont != '0' ]
+then case $2 in
+        
+        '*/*')
+        git clone "https://$1/$2" $3 $4 $5 $6 
+        ;;
+        
+        *)
+        echo "invalid repo, use pattern */*"
+esac
+fi
+}
+
+
+4chanThreadPics()
+{
+curl -iG $1 | grep -Po '\w+\.4chan(nel)?\.org\/\w{1,5}\/\d+\.(jpg|jpeg|png)' | sort -u | wget -i - -P 4chan.d
 }
