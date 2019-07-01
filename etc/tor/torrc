@@ -1,0 +1,39 @@
+# Bridges
+# [REDACTED]
+
+
+# Auth happens in data dir through cookies
+CookieAuthentication 1
+
+DataDirectory /var/tor/data
+GeoIPFile /usr/share/tor/geoip
+GeoIPv6File /usr/share/tor/geoip6
+ReachableAddresses *:80,*:443
+UseBridges 1
+
+# Strictly exclude all circuits that do not match our preferences.
+# This WILL prevent connectivity to some hidden services.
+# Turning off StrictNodes wouldn't be terrible,
+# mostly used when connecting to hidden services
+# If you prefer not to be strict, change following line to 'StrictNodes 0'
+StrictNodes 1
+
+# Exclude 4 eyes countries + Israel.
+# Also exclude questionable relays.
+ExcludeNodes BadExit, {il}, {gb}, {ca}, {nz}, {au}, AD77073249E2DC7381E27D40DE686E4AF18D0123, BCFAE263DD50376156A357F8FA68546404B5449F, D2F96A58AF61CEF88DB1BD937F02E59BBBB0856A, 3517D6C815A0EB1D929190C9786AFDDADE81554B, 32290ECF797429AD9871FDC061A3D741D6F7B3A5, 62FFCE95E344A5285130EDC0D9DA43F50AD781DD, C752D139BA83E80FB15C41F1DE6289768F4F64BC, BD1098A4552B28623A73DA3E6233A00942AC3F64, 0D83B8A5937F6938C74F326C21C21959F395E825, B7FA762325E99D75E3CE4261D2D52E00C8779FC8, 3D79C85A09174F3D258180F1EFA6D8CF09665023, A54FF34866C018E4BF1483A0E995E513450B73E2, 609D651BEB7A5B6691EC02756C3945DE707BEBEE, C6BAC4AC8980ADC44C27A3777406B77C71C205EF, 3C1F23C37F671D97D2B1B6FC329FC2487988BBEA
+
+# Only use entry nodes from your region.
+# Your own region can already see you connecting.
+# No reason for a Rio client to connect to a Moskow guard.
+# This does not work with bridges.
+# EntryNodes [REDACTED] 
+
+# Avoid disk writes, are there any drawbacks to this?
+AvoidDiskWrites 1
+
+## fteproxy configuration
+ClientTransportPlugin fte exec /usr/share/tor/PluggableTransports/fteproxy.wrapper --managed
+
+## obfs4proxy configuration
+ClientTransportPlugin obfs2,obfs3,obfs4,scramblesuit exec /usr/share/tor/PluggableTransports/obfs4proxy
+
